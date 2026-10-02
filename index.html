@@ -119,41 +119,60 @@
 
         </section>
 
+        
 
-        <section class="findings">
+   <section class="findings">
 
-            <div class="section-label">
-                WHAT WE FOUND
-            </div>
+    <div class="section-label">
+        WHAT WE FOUND
+    </div>
+
+    <div class="finding-grid">
+
+        <div class="finding">
+            <span id="duplicateCount">0</span>
+            duplicate groups
+        </div>
+
+        <div class="finding">
+            <span id="emptyCount">0</span>
+            empty files
+        </div>
+
+        <div class="finding">
+            <span>0</span>
+            old files
+        </div>
+
+        <div class="finding">
+            <span id="largeFileCount">0</span>
+            large files
+        </div>
+
+    </div>
+
+</section>
+
+<section class="duplicates">
+
+    <div class="section-label">
+        DUPLICATES
+    </div>
+
+    <div id="duplicateList"></div>
+
+</section>
 
 
-            <div class="finding-grid">
+<section class="large-files">
 
-                <div class="finding">
-                    <span>0</span>
-                    duplicate groups
-                </div>
+    <div class="section-label">
+        LARGE FILES
+    </div>
 
-                <div class="finding">
-                    <span id="emptyCount">0</span>
-                    empty files
-                </div>
+    <div id="largeFileList"></div>
 
-                <div class="finding">
-                    <span>0</span>
-                    old files
-                </div>
-
-                <div class="finding">
-                    <span>0</span>
-                    large files
-                </div>
-
-            </div>
-
-        </section>
-
-
+</section>
         <section class="file-types">
 
             <div class="section-label">
@@ -161,29 +180,24 @@
             </div>
 
 
-            <div class="type-list">
+          <div class="type-list">
 
-                <div class="type-row">
-                    <span>PDF</span>
-                    <span>0</span>
-                </div>
+    <div class="type-row">
+        <span>Images</span>
+        <span id="imageCount">0</span>
+    </div>
 
-                <div class="type-row">
-                    <span>JPG</span>
-                    <span>0</span>
-                </div>
+    <div class="type-row">
+        <span>Videos</span>
+        <span id="videoCount">0</span>
+    </div>
 
-                <div class="type-row">
-                    <span>MP4</span>
-                    <span>0</span>
-                </div>
+    <div class="type-row">
+        <span>Documents</span>
+        <span id="documentCount">0</span>
+    </div>
 
-                <div class="type-row">
-                    <span>ZIP</span>
-                    <span>0</span>
-                </div>
-
-            </div>
+</div>
 
         </section>
 

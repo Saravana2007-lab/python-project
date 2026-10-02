@@ -1,95 +1,244 @@
+/* =========================================================
+   DIGITAL ARCHAEOLOGIST
+   Minimal / Elegant Dashboard
+   ========================================================= */
+
+:root {
+    --background: #f5f5f3;
+    --surface: #ffffff;
+    --surface-soft: #fafafa;
+
+    --text: #151515;
+    --text-secondary: #666;
+    --text-muted: #999;
+
+    --border: #e6e6e3;
+    --border-strong: #d8d8d4;
+
+    --accent: #111111;
+
+    --radius: 14px;
+
+    --shadow-soft:
+        0 8px 30px rgba(0, 0, 0, 0.04);
+
+    --shadow-hover:
+        0 12px 35px rgba(0, 0, 0, 0.08);
+
+    --transition:
+        180ms ease;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
 
-body {
-    background: #fafafa;
-    color: #181818;
+/* =========================================================
+   BODY
+   ========================================================= */
 
-    font-family: Arial, sans-serif;
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            var(--background) 55%
+        );
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
 }
 
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
 
 .container {
-    width: min(900px, 90%);
+
+    width: min(1000px, 92%);
 
     margin: 0 auto;
+
+    padding-bottom: 100px;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .header {
-    padding: 80px 0 60px;
 
-    border-bottom: 1px solid #e5e5e5;
+    padding: 90px 0 65px;
+
+    border-bottom: 1px solid var(--border);
+
+    position: relative;
 }
 
 
 .brand {
-    font-size: 14px;
 
-    font-weight: 700;
+    display: inline-flex;
 
-    letter-spacing: 1.5px;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.brand::before {
+
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--text);
 }
 
 
 .tagline {
-    margin-top: 12px;
 
-    font-size: 32px;
+    max-width: 650px;
 
-    letter-spacing: -1px;
+    margin-top: 18px;
 
-    color: #555;
+    font-size: clamp(32px, 5vw, 56px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 500;
+
+    color: var(--text);
 }
 
 
-/* SECTIONS */
+.header::after {
+
+    content: "FILE SYSTEM ANALYSIS";
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 section {
-    padding: 40px 0;
 
-    border-bottom: 1px solid #e5e5e5;
+    padding: 45px 0;
+
+    border-bottom: 1px solid var(--border);
 }
 
 
 .section-label {
-    margin-bottom: 22px;
 
-    font-size: 11px;
+    margin-bottom: 20px;
 
-    font-weight: 700;
+    font-size: 10px;
 
-    letter-spacing: 1.5px;
+    font-weight: 800;
 
-    color: #888;
+    letter-spacing: 1.8px;
+
+    color: var(--text-muted);
 }
 
 
-/* FOLDER INPUT */
+/* =========================================================
+   FOLDER INPUT
+   ========================================================= */
 
 .folder-input {
+
     display: flex;
 
     gap: 10px;
+
+    padding: 6px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-strong);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-soft);
+
+    transition: var(--transition);
+}
+
+
+.folder-input:focus-within {
+
+    border-color: #aaa;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.07);
 }
 
 
 #folderPath {
+
     flex: 1;
 
-    padding: 15px 16px;
+    min-width: 0;
 
-    border: 1px solid #d8d8d8;
+    padding: 14px 15px;
 
-    background: white;
+    border: none;
+
+    background: transparent;
+
+    color: var(--text);
 
     font-size: 14px;
 
@@ -97,24 +246,23 @@ section {
 }
 
 
-#folderPath:focus {
-    border-color: #888;
-}
-
-
 #folderPath::placeholder {
+
     color: #aaa;
 }
 
 
-/* SCAN BUTTON */
-
 #scanButton {
-    padding: 15px 22px;
+
+    flex-shrink: 0;
+
+    padding: 13px 22px;
 
     border: none;
 
-    background: #181818;
+    border-radius: 9px;
+
+    background: var(--accent);
 
     color: white;
 
@@ -123,154 +271,565 @@ section {
     font-weight: 600;
 
     cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
 }
 
 
 #scanButton:hover {
-    background: #333;
+
+    background: #292929;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-1px);
 }
 
 
-/* STATUS */
+#scanButton:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
 
 #scanStatus {
+
+    min-height: 20px;
+
     margin-top: 14px;
 
-    color: #777;
+    color: var(--text-muted);
 
-    font-size: 13px;
+    font-size: 12px;
 }
 
 
-/* STATISTICS */
+/* =========================================================
+   OVERVIEW
+   ========================================================= */
 
 .stats {
+
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 40px;
+    gap: 16px;
 }
 
 
 .stat {
+
+    min-height: 150px;
+
+    padding: 25px;
+
     display: flex;
 
     flex-direction: column;
+
+    justify-content: space-between;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-soft);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+
+.stat:hover {
+
+    transform: translateY(-3px);
+
+    border-color: var(--border-strong);
+
+    box-shadow: var(--shadow-hover);
 }
 
 
 .stat-value {
-    font-size: 36px;
 
-    font-weight: 500;
+    font-size: 38px;
 
-    letter-spacing: -1.5px;
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: -2px;
 }
 
 
 .stat-label {
-    margin-top: 4px;
 
-    color: #888;
+    color: var(--text-muted);
 
-    font-size: 13px;
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
 }
 
 
-/* FINDINGS */
+/* =========================================================
+   FINDINGS
+   ========================================================= */
 
 .finding-grid {
+
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 20px;
+    gap: 12px;
 }
 
 
 .finding {
-    padding: 18px 0;
 
-    color: #666;
+    display: flex;
 
-    border-bottom: 1px solid #eeeeee;
+    align-items: center;
 
-    font-size: 14px;
+    min-height: 70px;
+
+    padding: 18px 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    box-shadow: var(--shadow-soft);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.finding:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-hover);
 }
 
 
 .finding span {
-    margin-right: 8px;
 
-    color: #181818;
+    margin-right: 10px;
 
-    font-size: 20px;
+    color: var(--text);
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   DUPLICATES
+   ========================================================= */
+
+.duplicate-group {
+
+    margin-bottom: 14px;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-soft);
+}
+
+
+.duplicate-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 16px 20px;
+
+    background: var(--surface-soft);
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 12px;
 
     font-weight: 600;
 }
 
 
-/* FILE TYPES */
+.duplicate-header span:last-child {
+
+    color: var(--text-muted);
+
+    font-weight: 500;
+}
+
+
+.duplicate-files {
+
+    padding: 4px 20px;
+}
+
+
+.duplicate-file {
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+
+    word-break: break-all;
+}
+
+
+.duplicate-file:last-child {
+
+    border-bottom: none;
+}
+
+
+.no-duplicates {
+
+    padding: 25px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   LARGE FILES
+   ========================================================= */
+
+.large-file {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 20px;
+
+    margin-bottom: 8px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    box-shadow: var(--shadow-soft);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.large-file:hover {
+
+    transform: translateX(3px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+.large-file span:first-child {
+
+    color: var(--text-secondary);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+
+    word-break: break-all;
+}
+
+
+.large-file span:last-child {
+
+    flex-shrink: 0;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.no-large-files {
+
+    padding: 25px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   FILE TYPES
+   ========================================================= */
 
 .type-list {
-    width: 100%;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-soft);
 }
 
 
 .type-row {
+
     display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
-    padding: 16px 0;
+    padding: 18px 20px;
 
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border);
 
-    font-size: 14px;
+    font-size: 13px;
+
+    transition: background var(--transition);
+}
+
+
+.type-row:last-child {
+
+    border-bottom: none;
+}
+
+
+.type-row:hover {
+
+    background: var(--surface-soft);
 }
 
 
 .type-row span:last-child {
-    color: #888;
+
+    min-width: 35px;
+
+    text-align: right;
+
+    color: var(--text);
+
+    font-weight: 700;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   SUBTLE SCROLLBAR
+   ========================================================= */
 
-@media (max-width: 600px) {
+::-webkit-scrollbar {
+
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #d0d0cc;
+
+    border-radius: 20px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #aaa;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width: 90%;
+    }
+
 
     .header {
-        padding: 50px 0 40px;
+
+        padding: 60px 0 50px;
+    }
+
+
+    .header::after {
+
+        display: none;
     }
 
 
     .tagline {
-        font-size: 25px;
+
+        font-size: 34px;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    section {
+
+        padding: 35px 0;
     }
 
 
     .folder-input {
+
         flex-direction: column;
+
+        padding: 6px;
     }
 
 
     #scanButton {
+
         width: 100%;
     }
 
 
     .stats {
-        grid-template-columns: 1fr;
 
-        gap: 25px;
+        grid-template-columns: 1fr;
+    }
+
+
+    .stat {
+
+        min-height: 120px;
     }
 
 
     .finding-grid {
+
         grid-template-columns: 1fr;
+    }
+
+
+    .large-file {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .tagline {
+
+        font-size: 29px;
+    }
+
+
+    .stat-value {
+
+        font-size: 32px;
+    }
+
+
+    .finding {
+
+        min-height: 62px;
+
+        padding: 15px;
     }
 
 }
