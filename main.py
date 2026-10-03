@@ -7,9 +7,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-# ============================================================
+# ===========================================================
 # FILE TYPE DEFINITIONS
-# ============================================================
+# ===========================================================
 
 IMAGE_EXTENSIONS = {
     ".jpg", ".jpeg", ".png", ".gif",
@@ -18,7 +18,7 @@ IMAGE_EXTENSIONS = {
 
 VIDEO_EXTENSIONS = {
     ".mp4", ".mkv", ".avi",
-    ".mov", ".wmv", ".webm"
+    ".mov", ".wmv", ".webm",".App"
 }
 
 DOCUMENT_EXTENSIONS = {
@@ -202,7 +202,6 @@ def scan_folder(folder_path):
 # ============================================================
 
 LARGE_FILE_SIZE = 500 * 1024 * 1024
-
 
 def find_large_files(folder_path):
 
